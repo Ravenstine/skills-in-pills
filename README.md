@@ -323,17 +323,17 @@ Help would most definitely be appreciated!  If you've forked the repo and added 
 
 MIT © Ben Titcomb
 
-[node-img]: https://img.shields.io/node/v/object-flatten-referencing.svg?style=flat-square&label=works%20on%20node
-[node-url]: https://www.npmjs.com/package/object-flatten-referencing
+[node-img]: https://img.shields.io/node/v/skills-in-pills.svg?style=flat-square&label=works%20on%20node
+[node-url]: https://www.npmjs.com/package/skills-in-pills
 
-[npm-img]: https://img.shields.io/npm/v/object-flatten-referencing.svg?style=flat-square&label=release
-[npm-url]: https://www.npmjs.com/package/object-flatten-referencing
+[npm-img]: https://img.shields.io/npm/v/skills-in-pills.svg?style=flat-square&label=release
+[npm-url]: https://www.npmjs.com/package/skills-in-pills
 
 [deps2d-img]: https://img.shields.io/badge/deps%20in%202D-see_here-08f0fd.svg?style=flat-square
-[deps2d-url]: http://npm.anvaka.com/#/view/2d/object-flatten-referencing
+[deps2d-url]: http://npm.anvaka.com/#/view/2d/skills-in-pills
 
-[downloads-img]: https://img.shields.io/npm/dm/object-flatten-referencing.svg?style=flat-square
-[downloads-url]: https://npmcharts.com/compare/object-flatten-referencing
+[downloads-img]: https://img.shields.io/npm/dm/skills-in-pills.svg?style=flat-square
+[downloads-url]: https://npmcharts.com/compare/skills-in-pills
 
-[license-badge]: https://img.shields.io/npm/l/object-flatten-referencing.svg?style=flat-square
-[license]: https://github.com/codsen/object-flatten-referencing/blob/master/license.md
+[license-badge]: https://img.shields.io/npm/l/skills-in-pills.svg?style=flat-square
+[license]: https://github.com/Ravenstine/skills-in-pills/blob/master/license.md
