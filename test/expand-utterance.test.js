@@ -1,32 +1,27 @@
-'use strict';
+/* eslint max-len:0 */
 
-const assert       = require('assert');
+// const assert = require('assert');
 const expandUtterance = require('../lib/expand-utterance');
 
-describe('expand-utterance', function(){
+describe('expand-utterance', () => {
+  // const matcher = '(i would|i\'d) like [count:AMAZON.NUMBER] [snack:CustomType] [when:UnknownType]';
 
-  let matcher = '(i would|i\'d) like [count:AMAZON.NUMBER] [snack:CustomType] [when:UnknownType]';
+  const impliedTypeUtterance = 'look ma!  no [number] types!';
 
-  let impliedTypeUtterance = 'look ma!  no [number] types!';
-
-  let intent = {
+  const intent = {
     types: {
       CustomType: {
         values: [
           'apples',
           'oranges',
-          'peanuts'
-        ]
-      }
-    }
+          'peanuts',
+        ],
+      },
+    },
   };
 
-  it('guesses an implied built-in type', function(){
+  it('guesses an implied built-in type', () => {
     expandUtterance(impliedTypeUtterance, intent);
     // assert.deepEqual
   });
-  
 });
-
-
-
