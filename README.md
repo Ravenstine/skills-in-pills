@@ -1,13 +1,42 @@
-Skills In Pills
-===============
+# Skills In Pills
 
-A nicer way to write Alexa skills. (WIP)
+> A nicer way to write Alexa skills. (WIP)
+
+[![Minimum Node version required][node-img]][node-url]
+[![Link to npm page][npm-img]][npm-url]
+[![View dependencies as 2D chart][deps2d-img]][deps2d-url]
+[![Downloads/Month][downloads-img]][downloads-url]
+[![MIT License][license-badge]][license]
+
 
 - Rapidly prototype fun & useful skills through human-readable configuration.
 - Easily handle many complex states within a skill.
-- Compile your intent schema from your skill configuration.  Never be baffled at synatx errors in your schema.†
+- Compile your intent schema from your skill configuration.  Never be baffled at syntax errors in your schema.†
 
-**NOTE:** A bunch of things are subject to change, including how the skill fundamentally is run and installed.  For the time being, treat this thing as a toy.
+**NOTE:** A bunch of things is subject to change, including how the skill fundamentally is run and installed.  For the time being, treat this thing as a toy.
+
+## Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Structure](#structure)
+- [Getting Started](#getting-started)
+- [Core Concepts](#core-concepts)
+- [Tutorial](#tutorial)
+  - [Skill Setup](#skill-setup)
+  - [Tutorial Cont'd](#tutorial-contd)
+- [Schema Builder](#schema-builder)
+- [Development](#development)
+- [Deployment](#deployment)
+- [Object Reference](#object-reference)
+- [Tests](#tests)
+- [HALP](#halp)
+- [TODO](#todo)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Structure
 
@@ -22,11 +51,11 @@ At the moment, Skills in Pills is available simply as an app skeleton.  Follow t
 
 ## Core Concepts
 
-A skill is configured almost entirely through YAML files referred to as "pills".  If you are familiar with [how to write YAML](https://learnxinyminutes.com/docs/yaml/), then you know how to write a skill with pills.  An entire skill can be represented in a single pill, or multiple pills can be used to represent groups of states(e.g. different "scenes" in a text adventure game).  `entrypoint.yml` is always the default pill.
+A skill is configured almost entirely through YAML files referred to as "pills".  If you are familiar with [how to write YAML](https://learnxinyminutes.com/docs/yaml/), then you know how to write a skill with pills.  An entire skill can be represented in a single pill, or multiple pills can be used to represent groups of states(e.g., different "scenes" in a text adventure game).  `entrypoint.yml` is always the default pill.
 
 Each pill contains one or more "labels", which are merely the top-level objects in a pill.  You can think of them as the equivalent of functions in a programming language, though they are much more constrained than that.  A label can contain a variety of keys & values that build a skill response.
 
-For example, a label can have a `speak:` key that defines the speech text that is returned to an Alexa-enabled device.  If you want to ask the user a question and wait for a response, you would define that with a `ask:`.
+For example, a label can have a `speak:` key that defines the speech text that is returned to an Alexa-enabled device.  If you want to ask the user a question and wait for a response, you will define that with an `ask:`.
 
 ## Tutorial
 
@@ -40,7 +69,7 @@ In `myskill/pills/entrypoint.yml`, you'll see the following:
 
 ```yaml
 Intro:
-  speak: Congratulations!  You've successuflly run your first skill with pills.
+  speak: Congratulations!  You've successfully run your first skill with pills.
 ```
 
 Before we continue, build your schema by running `skill-in-pills build-schema`.  This will write a JSON file to the `schemas/` directory.
@@ -51,7 +80,7 @@ Now it's time to run the Bespoken Tools proxy server:
 bst proxy lambda index.js --verbose
 ```
 
-The output of that command will say something like `Your URL for Alexa Skill configuration:` and a link.  Copy that link down for later.
+The output of that command will say something like `Your URL for Alexa Skill configuration:` and a link.  Copy down that link for later.
 
 ### Skill Setup
 
@@ -76,7 +105,7 @@ Bespoken Tools is a useful tool that allows you to develop Alexa skills locally,
 
 The skill can be invoked by saying "Alexa, open my skill."
 
-Your device will then respond with "Congratulations!  You've successuflly run your first skill with pills."
+Your device will then respond with "Congratulations!  You've successfully run your first skill with pills."
 
 If that's the response you get, then you're good to go.  This is a pretty boring skill, though.  Let's make something more interesting!
 
@@ -97,7 +126,7 @@ Intro:
   ask: What's your favorite animal?
 ```
 
-Upon reinvoking the skill, you'll notice that the Echo device will wait for a response, but does nothing more even if you respond to it.  Let's actually make it listen to what you have to say by adding an intent.
+Upon reinvoking the skill, you'll notice that the Echo device will wait for a response, but does nothing more even if you respond to it.  Let's make it listen to what you have to say by adding an intent.
 
 ```yaml
 # pills/entrypoint.yml
@@ -110,7 +139,7 @@ Intro:
       go to: Read Animal Fact
 ```
 
-Hmm... that's not how you write an intent name... is it?  That looks more like a sample utterance.  Anyway, moving on.
+Hmm... that's not how you write an intent name, is it?  That looks more like a sample utterance.  Anyway, moving on.
 
 Because we have now changed how the interaction model works, we have to generate a new intent schema by running `skill-in-pills build-schema`.  Let's check out what's in that new file.
 
@@ -152,7 +181,7 @@ Because we have now changed how the interaction model works, we have to generate
 
 How did it do that???
 
-The compiler looked at the utterance you wrote and derived an intent name, a sample utterance, an a slot including the slot type!  When you define a slot in your intent by itself with no type specified, it will attempt to guess the type based on the name if it matches an Amazon built-in slot type.  We'll learn about defining types later on.  For now, this will work perfectly.
+The compiler looked at the utterance you wrote and derived an intent name, a sample utterance and a slot including the slot type!  When you define a slot in your intent by itself with no type specified, it will attempt to guess the type based on the name if it matches an Amazon built-in slot type.  We'll learn about defining types later on.  For now, this will work perfectly.
 
 Upload this schema in the Skill Builder and build the interaction model.  When that's done, reinvoke your skill by saying "Alexa, open my skill."
 
@@ -172,7 +201,7 @@ Read Animal Fact:
   speak: You said ${animal}.
 ```
 
-Now if you tell it that you like crocodiles, it will say "You like crocodiles."  How... useless.  Let's make your skill useful!
+Now if you tell it that you like crocodiles, it will say "You like crocodiles."  How useless!  Let's make your skill useful!
 
 ```yaml
 # pills/entrypoint.yml
@@ -185,13 +214,13 @@ Intro:
       go to: Read Animal Fact
 
 Read Animal Fact:
-  web request: 
+  web request:
     url: https://simple.wikipedia.org/w/api.php?format=json&redirects=1&action=query&prop=extracts&exintro=&explaintext=&titles=${animal}
     pluck: extract
   speak: You said ${animal}. ${webResponse}.
 ```
 
-Incredible!  You've written a skill that takes user input and returns useful information!  A skill can really be this simple.  But there are some finishing touches we should add.
+Incredible!  You've written a skill that takes user input and returns useful information!  A skill can be this simple.  But there are some finishing touches we should add.
 
 ```yaml
 # pills/entrypoint.yml
@@ -217,9 +246,9 @@ Read Animal Fact:
   speak: You said ${animal}. ${webResponse}.
 ```
 
-Since we want a user to also be able to invoke the skill by saying "Alexa, ask my skill about monkeys", we've added a new label at the top of the pill that directs us between the intro and the fact reader.  The label at the top of a pill is always the first to be executed during a session.  You can think of what we created as a "router" label.
+Since we want a user also to be able to invoke the skill by saying "Alexa, ask my skill about monkeys", we've added a new label at the top of the pill that directs us between the intro and the fact reader.  The label at the top of a pill is always the first to be executed during a session.  You can think of what we created as a "router" label.
 
-Sometimes you'll ask it something it will not know about.  In that case, the `none speak:` key in the web request overrides the label dialog if the search result returned nothing.
+Sometimes you'll ask it something that it does not know.  In that case, the `none speak:` key in the web request overrides the label dialog if the search result returned nothing.
 
 ## Schema Builder
 
@@ -253,7 +282,7 @@ Run tests with the `mocha` command in the root project folder.
 
 ## HALP
 
-Help would most definitely be appreciated!  If you've forked the repo and added your own features, don't hesitate to make a pull request.  Assistance with documentation, as well as discussion in [issues](https://github.com/ravenstine/skills-in-pills/issues) would be of great help.
+Help would most definitely be appreciated!  If you've forked the repo and added new features, don't hesitate to make a pull request.  Assistance with documentation, as well as discussion in [issues](https://github.com/ravenstine/skills-in-pills/issues) would be of great help.
 
 ## TODO
 
@@ -292,5 +321,19 @@ Help would most definitely be appreciated!  If you've forked the repo and added 
 
 ## License
 
-See [LICENSE.txt](https://github.com/Ravenstine/skills-in-pills/blob/master/LICENSE.txt).
+MIT © Ben Titcomb
 
+[node-img]: https://img.shields.io/node/v/skills-in-pills.svg?style=flat-square&label=works%20on%20node
+[node-url]: https://www.npmjs.com/package/skills-in-pills
+
+[npm-img]: https://img.shields.io/npm/v/skills-in-pills.svg?style=flat-square&label=release
+[npm-url]: https://www.npmjs.com/package/skills-in-pills
+
+[deps2d-img]: https://img.shields.io/badge/deps%20in%202D-see_here-08f0fd.svg?style=flat-square
+[deps2d-url]: http://npm.anvaka.com/#/view/2d/skills-in-pills
+
+[downloads-img]: https://img.shields.io/npm/dm/skills-in-pills.svg?style=flat-square
+[downloads-url]: https://npmcharts.com/compare/skills-in-pills
+
+[license-badge]: https://img.shields.io/npm/l/skills-in-pills.svg?style=flat-square
+[license]: https://github.com/Ravenstine/skills-in-pills/blob/master/license.md

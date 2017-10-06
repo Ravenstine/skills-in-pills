@@ -1,8 +1,4 @@
-'use strict';
+const pillBox = require('./lib/pill-box');
+const handler = require('./lib/handler');
 
-const pillBox   = require('./lib/pill-box');
-
-module.exports  = (pillsDirectory) => {
-  return require('./lib/handler')(pillBox(pillsDirectory));
-}
-
+module.exports = pillsDirectory => (handler)(pillBox(pillsDirectory));

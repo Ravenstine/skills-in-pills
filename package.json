@@ -1,17 +1,35 @@
 {
   "name": "skills-in-pills",
   "version": "0.0.5",
-  "description": "A more fun way to build skills for Alexa.",
-  "main": "index.js",
+  "description": "A more fun way to build skills for Alexa",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6",
+    "npm": ">=5",
+    "yarn": ">=1"
+  },
+  "repository": "Ravenstine/skills-in-pills",
+  "author": {
+    "email": "btitcomb@scpr.org",
+    "name": "Ben Titcomb"
+  },
   "bin": {
     "skills-in-pills": "./bin/skills-in-pills"
   },
+  "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "proxy": "bst proxy lambda index.js"
+    "precommit": "./node_modules/.bin/doctoc README.md && npm test",
+    "proxy": "bst proxy lambda index.js",
+    "test": "./node_modules/.bin/eslint lib/*.js bin/*.js index.js && mocha",
+    "test2": "mocha"
   },
-  "author": "Ben Titcomb",
-  "license": "MIT",
+  "keywords": [
+    "alexa",
+    "echo-dot",
+    "amazon-echo",
+    "amazon-alexa-skill",
+    "voice-activated"
+  ],
   "dependencies": {
     "browserify": "^14.4.0",
     "camelize": "^1.0.0",
@@ -35,6 +53,11 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.100.0",
+    "doctoc": "^1.3.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.7.0",
+    "husky": "^0.14.3",
     "mocha": "^3.4.2"
   }
 }
